@@ -128,8 +128,7 @@ impl BitSet {
         #[cfg(debug_assertions)]
         assert!(num_bits > 0);
         let num_chunks = Self::calc_chunks(num_bits);
-        let mut chunks = Vec::with_capacity(num_chunks);
-        chunks.resize(num_chunks, 0);
+        let chunks = vec![0; num_chunks];
         Self { chunks, num_bits }
     }
 }

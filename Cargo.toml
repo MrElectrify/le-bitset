@@ -1,0 +1,5 @@
+[package]
+name = "le-bitset"
+description = "Little-endian bitset"
+version = "0.1.0"
+edition = "2021"

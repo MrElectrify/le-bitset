@@ -9,6 +9,7 @@ mod test;
 const U32_BITS: usize = std::mem::size_of::<u32>() * 8;
 
 /// A little-endian bitset
+#[derive(Debug, Clone)]
 pub struct BitSet {
     chunks: Vec<u32>,
     num_bits: usize,
@@ -33,6 +34,11 @@ impl BitSet {
     #[inline]
     fn last_mask(num_bits: usize) -> u32 {
         !(!1 << ((num_bits - 1) % U32_BITS))
+    }
+
+    /// Returns the chunks from the bitset
+    pub fn chunks(&self) -> &Vec<u32> {
+        &self.chunks
     }
 
     /// Creates a bitset from the chunks

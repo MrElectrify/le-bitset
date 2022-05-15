@@ -3,6 +3,9 @@
 //! need this, this crate probably isn't for you. Usage
 //! is pretty self-explanatory.
 
+#[cfg(feature = "serde")]
+use serde_derive::{Deserialize, Serialize};
+
 #[cfg(test)]
 mod test;
 
@@ -10,7 +13,7 @@ const U32_BITS: usize = std::mem::size_of::<u32>() * 8;
 
 /// A little-endian bitset
 #[derive(Debug, Clone)]
-#[cfg_attr(serde, derive(Deserialize, Serialize))]
+#[cfg_attr(feature = "serde", derive(Deserialize, Serialize))]
 pub struct BitSet {
     chunks: Vec<u32>,
     num_bits: usize,
